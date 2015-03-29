@@ -35,8 +35,9 @@ class InstagramBlock extends BaseBlockService
     public function setDefaultSettings(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'limit' => 6,
-            'template' => 'XabenInstagramBundle:Block:instagram.html.twig',
+            'userId' => $this->config['user_id'],
+            'limit' => $this->config['limit'],
+            'template' => $this->config['template'],
         ));
     }
 
@@ -74,7 +75,8 @@ class InstagramBlock extends BaseBlockService
         return $this->renderResponse($blockContext->getTemplate(), array(
             'block' => $blockContext->getBlock(),
             'settings' => $settings,
-            'photos' => $photos
+            'photos' => $photos,
+            'username' => $this->config['user_name'],
         ), $response);
     }
 }

@@ -27,6 +27,7 @@ class InstagramBridge
     public function getRecentPhotos($userId, $count)
     {
         $data = $this->cache->fetch('instagram'.$userId);
+
         if (!$data) {
             $dataJSON = $this->fetch("https://api.instagram.com/v1/users/$userId/media/recent/?count=$count&client_id=".$this->config['api_key']);
             $data = json_decode($dataJSON);
@@ -43,6 +44,6 @@ class InstagramBridge
     {
         $browser = new Browser();
 
-        return $browser->get($address);
+        return $browser->get($address)->getContent();
     }
 }

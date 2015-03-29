@@ -1,10 +1,10 @@
 services:
     xaben.instagram.service.instagrambridge:
         class: Xaben\InstagramBundle\Service\InstagramBridge
-        arguments: [ @doctrine_cache.providers.ciofilm_json_cache, @logger, %xaben.instagram.config% ]
+        arguments: [ @=service(parameter('xaben.instagram.cache_service')), @logger, %xaben.instagram.config% ]
 
     xaben.instagram.block.instagram:
         class: Xaben\InstagramBundle\Block\InstagramBlock
-        arguments: [ "xaben.instagram.block.instagram", @templating, @xaben.instagram.service.instagrambridge ]
+        arguments: [ "xaben.instagram.block.instagram", @templating, @xaben.instagram.service.instagrambridge, %xaben.instagram.config% ]
         tags:
             - { name: sonata.block }

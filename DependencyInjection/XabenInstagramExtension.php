@@ -19,6 +19,7 @@ class XabenInstagramExtension extends Extension
 
         //pass entire config through container
         $container->setParameter("xaben.instagram.config", $config);
+        $container->setParameter("xaben.instagram.cache_service", $config['cache_service']);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');

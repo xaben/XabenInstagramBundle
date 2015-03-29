@@ -4,7 +4,7 @@
     {% if photos is defined and photos | length > 0  %}
         {% for photo in photos %}
             <div class="col-xs-6" style="padding: 2px">
-                <a href="http://instagram.com/sergiuciorescu" rel="nofollow" target="_blank">
+                <a href="http://instagram.com/{{ username }}" rel="nofollow" target="_blank">
                     <img src="{{ photo.images.standard_resolution.url }}" alt="{{ photo.caption.text }}">
                 </a>
             </div>
