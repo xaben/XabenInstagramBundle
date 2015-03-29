@@ -42,7 +42,7 @@ class InstagramBridge
 
     private function fetch($address)
     {
-        $browser = new Browser();
+        $browser = new Browser(new \Buzz\Client\Curl());
 
         return $browser->get($address)->getContent();
     }
