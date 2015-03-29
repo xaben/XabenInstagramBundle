@@ -10,13 +10,13 @@ class InstagramBridge
 {
     protected $cache;
     protected $logger;
-    protected $app_id;
+    protected $config;
 
-    public function __construct(CacheProvider $cache, LoggerInterface $logger, $app_id)
+    public function __construct(CacheProvider $cache, LoggerInterface $logger, $config)
     {
         $this->cache = $cache;
         $this->logger = $logger;
-        $this->app_id = $app_id;
+        $this->config = $config;
     }
 
     /**
@@ -28,7 +28,7 @@ class InstagramBridge
     {
         $data = $this->cache->fetch('instagram'.$userId);
         if (!$data) {
-            $dataJSON = $this->fetch("https://api.instagram.com/v1/users/$userId/media/recent/?count=$count&client_id=".$this->app_id);
+            $dataJSON = $this->fetch("https://api.instagram.com/v1/users/$userId/media/recent/?count=$count&client_id=".$this->config['api_key']);
             $data = json_decode($dataJSON);
             $saved = $this->cache->save('instagram'.$userId, $data, '1800');
             if (!$saved) {

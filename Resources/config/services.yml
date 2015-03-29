@@ -1,7 +1,7 @@
 services:
     xaben.instagram.service.instagrambridge:
         class: Xaben\InstagramBundle\Service\InstagramBridge
-        arguments: [ @doctrine_cache.providers.ciofilm_json_cache, @logger, '%instagram_app_id%' ]
+        arguments: [ @doctrine_cache.providers.ciofilm_json_cache, @logger, %xaben.instagram.config% ]
 
     xaben.instagram.block.instagram:
         class: Xaben\InstagramBundle\Block\InstagramBlock
