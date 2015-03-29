@@ -14,5 +14,8 @@
         "kriswallsmith/buzz": "*",
         "sonata-project/block-bundle": "*",
         "sonata-project/admin-bundle": "*"
+    },
+    "autoload": {
+        "psr-4": { "Xaben\\InstagramBundle\\": "" }
     }
 }
