@@ -1,0 +1,16 @@
+{% extends sonata_block.templates.block_base %}
+
+{% block block %}
+    {% if photos is defined and photos | length > 0  %}
+        {% for photo in photos %}
+            <div class="col-xs-6" style="padding: 2px">
+                <a href="http://instagram.com/sergiuciorescu" rel="nofollow" target="_blank">
+                    <img src="{{ photo.images.standard_resolution.url }}" alt="{{ photo.caption.text }}">
+                </a>
+            </div>
+            {% if loop.index is even %}
+                <div class="clearfix"></div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endblock %}
